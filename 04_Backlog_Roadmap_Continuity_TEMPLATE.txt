@@ -1,0 +1,196 @@
+BACKLOG & ROADMAP CONTINUITY DOCUMENT
+[Project Name] | v[X.Y] | [Month Year]
+
+Purpose: The "what's next" doc. Captures the prioritized work ahead --
+epics, upcoming sprints, deferred items, and the technical debt registry.
+Pin this in sprint planning sessions, roadmap reviews, and any LLM session
+focused on prioritization or scope discussion.
+
+FORMAT NOTE: Plain text (.txt). LLM-agnostic.
+
+UPDATE CADENCE: Updated at sprint planning (mandatory), at backlog
+grooming sessions, and whenever new work is identified or priorities
+shift. Roadmap section updated at least once per quarter.
+
+
+================================================================================
+LLM SESSION BOOTSTRAP
+================================================================================
+
+  >>> BEGIN BOOTSTRAP <<<
+  You are assisting with [Project Name] in a planning context -- sprint
+  planning, backlog grooming, roadmap discussion, or scope clarification.
+  I am [role].
+  
+  Pin this Backlog & Roadmap doc alongside Master Continuity. Treat the
+  prioritized order as authoritative. Do not propose reprioritization
+  without surfacing the tradeoffs explicitly. When suggesting estimates
+  or scoping, flag assumptions you are making.
+  >>> END BOOTSTRAP <<<
+
+
+================================================================================
+ROADMAP HORIZON
+================================================================================
+
+THIS QUARTER ([Q# YYYY]):
+  THEME:        [One-line strategic theme]
+  KEY OUTCOMES:
+    - [Outcome]
+    - [Outcome]
+  MAJOR EPICS:
+    - [Epic name] -- target sprint(s): [N-M]
+    - [Epic name] -- target sprint(s): [N-M]
+
+NEXT QUARTER ([Q# YYYY]):
+  THEME:        [Tentative theme]
+  KEY OUTCOMES:
+    - [Outcome]
+  MAJOR EPICS:
+    - [Epic name] -- tentative
+
+LATER (this year, lower confidence):
+  - [Initiative] -- rationale: [Why it's on the list]
+  - [Initiative] -- rationale: [Why it's on the list]
+
+
+================================================================================
+EPIC REGISTRY
+================================================================================
+
+Epics are large bodies of work spanning multiple sprints. Each epic should
+break down into stories that land in Sprint Continuity when active.
+
+EPIC: [Name]
+  ID:               [EPIC-N or equivalent]
+  Status:           [Planned | In Progress | Done | Deferred | Cancelled]
+  Owner Role:       [Role accountable for delivery]
+  Started:          [YYYY-MM-DD or "not yet"]
+  Target Complete:  [YYYY-MM-DD or sprint range]
+  Description:      [2-3 sentences on what this epic delivers and why]
+  Success Criteria:
+    - [Criterion]
+    - [Criterion]
+  Key Stories:
+    - [STORY-ID] [Title] -- status: [State]
+    - [STORY-ID] [Title] -- status: [State]
+  Dependencies:     [Other epics, external teams, etc.]
+  Risks:            [Known risks specific to this epic]
+
+
+EPIC: [Name]
+  ID:               
+  Status:           
+  Owner Role:       
+  Started:          
+  Target Complete:  
+  Description:      
+  Success Criteria:
+    - 
+  Key Stories:
+    - 
+  Dependencies:     
+  Risks:            
+
+
+================================================================================
+PRIORITIZED BACKLOG (READY FOR SPRINT PLANNING)
+================================================================================
+
+Stories that have been refined and are ready to be pulled into a sprint.
+Ordered by priority (top = highest). Items here should have acceptance
+criteria defined.
+
+Format:
+  [STORY-ID] [Title]
+    Epic:           [EPIC-ID, if applicable]
+    Estimate:       [Story points]
+    Priority:       [P0 | P1 | P2 | P3]
+    Acceptance:
+      - [Criterion]
+      - [Criterion]
+    Notes:          [Context an LLM or contributor needs]
+
+
+[STORY-ID] [Title]
+  Epic:           
+  Estimate:       
+  Priority:       
+  Acceptance:
+    - 
+    - 
+  Notes:          
+
+
+================================================================================
+DISCOVERY BACKLOG (NEEDS REFINEMENT)
+================================================================================
+
+Items that have been identified but not yet refined to "ready" state. Move
+to Prioritized Backlog after grooming.
+
+  [TITLE] -- raised by: [Role/source] -- [YYYY-MM-DD] -- [one-line description]
+  [TITLE] -- raised by: [Role/source] -- [YYYY-MM-DD] -- [one-line description]
+
+
+================================================================================
+DEFERRED & PARKED ITEMS
+================================================================================
+
+Items intentionally deferred. Track these so they don't quietly disappear --
+deferral is a decision, not a deletion.
+
+  [TITLE] -- deferred [YYYY-MM-DD] -- reason: [Why] -- revisit: [When/condition]
+  [TITLE] -- deferred [YYYY-MM-DD] -- reason: [Why] -- revisit: [When/condition]
+
+
+================================================================================
+TECHNICAL DEBT REGISTRY
+================================================================================
+
+Known technical debt with explicit cost and rough remediation estimate.
+Debt that requires architectural change should also appear in Architecture
+Continuity (Known Debt & Constraints).
+
+Format:
+  [DEBT-ID] [Title]
+    Logged:        [YYYY-MM-DD]
+    Logged By:     [Role]
+    Cost:          [What it makes harder -- velocity impact, risk, etc.]
+    Rough Effort:  [T-shirt size: S | M | L | XL]
+    Linked To:     [Epic, story, or "standalone"]
+    Plan:          [Address now | Address in epic X | Defer indefinitely]
+
+
+[DEBT-ID] 
+  Logged:        
+  Logged By:     
+  Cost:          
+  Rough Effort:  
+  Linked To:     
+  Plan:          
+
+
+================================================================================
+COMPLETED EPICS (RECENT, FOR REFERENCE)
+================================================================================
+
+Recently shipped epics, kept here for ~1 quarter for quick reference. Older
+than that, move to a separate archive doc or remove.
+
+  [EPIC-ID] [Title] -- completed [YYYY-MM-DD] -- [one-line outcome]
+  [EPIC-ID] [Title] -- completed [YYYY-MM-DD] -- [one-line outcome]
+
+
+================================================================================
+VERSION LOG
+================================================================================
+
+vX.Y | YYYY-MM-DD | [Initials] | Initial draft from template
+vX.Y | YYYY-MM-DD | [Initials] | [Material change summary]
+
+
+================================================================================
+
+Continuity Framework by ArcReact | arcreact.com
+Adapted for team-based Agile workflows | LLM-agnostic plaintext format

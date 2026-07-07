@@ -1,0 +1,223 @@
+SPRINT CONTINUITY DOCUMENT
+[Project Name] | v[X.Y] | [Month Year]
+
+Purpose: Rolling sprint state. Captures the current sprint's goals,
+in-flight work by team member-role, blockers, daily standup deltas, and
+carry-over from the prior sprint. Updated daily (or per-standup at minimum).
+This is the doc that ages out fastest and gets pruned most aggressively.
+
+FORMAT NOTE: Plain text (.txt). LLM-agnostic.
+
+UPDATE CADENCE: At minimum, updated at the close of each daily standup.
+Ideally, in-flight items are updated by their owners as state changes.
+Sprint Review and Retro outputs are captured here before sprint close,
+then the doc rolls into the next sprint.
+
+
+================================================================================
+LLM SESSION BOOTSTRAP
+================================================================================
+
+  >>> BEGIN BOOTSTRAP <<<
+  You are assisting with [Project Name], Sprint [N]. Today is
+  [YYYY-MM-DD], day [X] of a [Y]-day sprint. The sprint goal is
+  [one-line goal]. I am [role]. Today's session focus is [task].
+  
+  This Sprint Continuity doc is the freshest state of the sprint.
+  Pin alongside Master Continuity for full project context. Do not
+  modify ticket states or sprint scope without proposing the change
+  first.
+  >>> END BOOTSTRAP <<<
+
+
+================================================================================
+SPRINT METADATA
+================================================================================
+
+Sprint Number:        [N]
+Sprint Name/Theme:    [Optional theme, e.g., "Auth hardening"]
+Start Date:           [YYYY-MM-DD]
+End Date:             [YYYY-MM-DD]
+Sprint Length:        [N days]
+Last Doc Update:      [YYYY-MM-DD by Initials]
+
+
+================================================================================
+SPRINT GOAL
+================================================================================
+
+PRIMARY GOAL:
+  [One sentence. What does this sprint deliver? Should be specific and
+  testable. If you cannot describe success in one sentence, the sprint
+  scope is too broad.]
+
+SECONDARY GOALS (if any):
+  - [Goal]
+  - [Goal]
+
+DEFINITION OF DONE FOR SPRINT:
+  - [Criterion -- e.g., "All committed stories meet acceptance criteria"]
+  - [Criterion -- e.g., "No P0/P1 bugs introduced"]
+  - [Criterion -- e.g., "Documentation updated for shipped features"]
+
+
+================================================================================
+SPRINT BACKLOG -- COMMITTED ITEMS
+================================================================================
+
+Format per item:
+  [TICKET-ID] [Title]
+    Owner Role:    [Role, not personal name]
+    Story Points:  [N]
+    Status:        [Not Started | In Progress | In Review | Done | Blocked]
+    Acceptance:    [Bullet list of acceptance criteria]
+    Notes:         [Anything an LLM or new contributor needs to know]
+
+
+[TICKET-ID] [Title]
+  Owner Role:    
+  Story Points:  
+  Status:        
+  Acceptance:    
+    - 
+    - 
+  Notes:         
+
+
+[TICKET-ID] [Title]
+  Owner Role:    
+  Story Points:  
+  Status:        
+  Acceptance:    
+    - 
+    - 
+  Notes:         
+
+
+================================================================================
+IN-FLIGHT WORK BY ROLE
+================================================================================
+
+Snapshot of who is actively working on what right now. This is the section
+most useful for "where are we?" questions in standups and LLM sessions.
+
+ROLE: [e.g., Frontend Developer A]
+  Currently:    [Ticket ID and brief description]
+  Next Up:      [What they pick up after current item]
+  ETA:          [Best estimate for current item]
+
+ROLE: [e.g., Backend Developer]
+  Currently:    
+  Next Up:      
+  ETA:          
+
+ROLE: [e.g., QA Engineer]
+  Currently:    
+  Next Up:      
+  ETA:          
+
+[Add roles as needed. Use roles, not personal names, for portability and
+to avoid coupling the doc to specific team composition.]
+
+
+================================================================================
+BLOCKERS & RISKS
+================================================================================
+
+ACTIVE BLOCKERS:
+Format:
+  [YYYY-MM-DD] [Blocker description]
+    Affects:        [Ticket(s) or workstream]
+    Owner Pursuing: [Role driving resolution]
+    Dependency:     [What is blocking -- external team, decision, etc.]
+    Escalation:     [Yes/No -- has this been escalated, to whom]
+
+[YYYY-MM-DD] 
+  Affects:        
+  Owner Pursuing: 
+  Dependency:     
+  Escalation:     
+
+
+RISKS (potential blockers, not yet realized):
+  - [Risk description] -- mitigation: [Plan]
+  - [Risk description] -- mitigation: [Plan]
+
+
+================================================================================
+DAILY STANDUP LOG
+================================================================================
+
+Append-only daily entries. Most recent at top. Older entries can be pruned
+at sprint close (the Sprint Retro section preserves the summary).
+
+Format:
+  [YYYY-MM-DD] STANDUP
+    Wins:          [Notable progress since yesterday]
+    Concerns:      [New risks or blockers raised]
+    Decisions:     [Anything decided in standup]
+    Adjustments:   [Scope, ownership, or priority changes]
+
+
+[YYYY-MM-DD] STANDUP
+  Wins:          
+  Concerns:      
+  Decisions:     
+  Adjustments:   
+
+
+================================================================================
+CARRY-OVER FROM PRIOR SPRINT
+================================================================================
+
+Items that did not complete in the prior sprint and were rolled forward.
+Track these explicitly to surface chronic carry-over patterns in retros.
+
+  [TICKET-ID] [Title] -- carried from Sprint [N-1] -- reason: [Why it didn't
+                         complete -- scope, blocker, deprioritized, etc.]
+
+
+================================================================================
+SPRINT REVIEW NOTES (populate near sprint close)
+================================================================================
+
+DEMOED:
+  - [Item] -- received: [Stakeholder feedback summary]
+  - [Item] -- received: [Stakeholder feedback summary]
+
+NOT DEMOED (and why):
+  - [Item] -- reason: [Why it wasn't ready]
+
+STAKEHOLDER REQUESTS RAISED:
+  - [Request] -- routed to: [Backlog | Next Sprint | Decision Pending]
+
+
+================================================================================
+SPRINT RETRO NOTES (populate at sprint close)
+================================================================================
+
+WHAT WORKED:
+  - 
+  - 
+
+WHAT DIDN'T:
+  - 
+  - 
+
+ACTIONS FOR NEXT SPRINT:
+  - [Action] -- owner role: [Role]
+  - [Action] -- owner role: [Role]
+
+
+================================================================================
+VERSION LOG
+================================================================================
+
+vX.Y | YYYY-MM-DD | [Initials] | Sprint [N] opened
+vX.Y | YYYY-MM-DD | [Initials] | [Material updates]
+
+
+================================================================================
+
+Continuity Framework by ArcReact | arcreact.com
+Adapted for team-based Agile workflows | LLM-agnostic plaintext format

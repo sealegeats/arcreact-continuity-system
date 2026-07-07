@@ -1,0 +1,268 @@
+SESSION CONTROL CONTINUITY DOCUMENT
+[Project Name] | v[X.Y] | [Month Year]
+
+Purpose: The meta-doc. Captures HOW the team uses LLMs effectively across
+this project -- session bootstrap patterns, prompt conventions that work
+cross-model, thread health indicators, and escalation patterns. This is
+the doc that makes the rest of the continuity system actually work for
+people new to the practice.
+
+FORMAT NOTE: Plain text (.txt). LLM-agnostic by design.
+
+UPDATE CADENCE: Updated when the team discovers a new pattern that works,
+when a recurring failure mode is identified, or when a new LLM is added
+to the team's toolkit.
+
+WHY THIS DOC EXISTS:
+  Continuity docs hold project state. This doc holds the operating
+  manual for working with LLMs against that state. Without it, every
+  team member reinvents their own prompting style, the docs get
+  inconsistent updates, and thread quality varies wildly across the
+  team.
+
+
+================================================================================
+SUPPORTED LLMS & THEIR QUIRKS
+================================================================================
+
+Tools approved for this project's use, with known behavioral notes. Update
+when a new tool is added or an existing one's behavior shifts notably.
+
+LLM: [e.g., ChatGPT (GPT-X)]
+  Strengths:        [What it does well in this project's context]
+  Weaknesses:       [Known failure modes]
+  Context Limit:    [Approximate, in pages or tokens]
+  File Handling:    [How files/uploads behave]
+  Memory Behavior:  [Persistent memory? Per-session only? Project workspaces?]
+  Notes:            [Anything else the team has learned]
+
+LLM: [e.g., Gemini]
+  Strengths:        
+  Weaknesses:       
+  Context Limit:    
+  File Handling:    
+  Memory Behavior:  
+  Notes:            
+
+LLM: [e.g., Other approved tool]
+  Strengths:        
+  Weaknesses:       
+  Context Limit:    
+  File Handling:    
+  Memory Behavior:  
+  Notes:            
+
+
+================================================================================
+SESSION BOOTSTRAP PROTOCOL
+================================================================================
+
+Every LLM session for this project follows the same opening sequence.
+Consistency matters more than cleverness -- a predictable bootstrap means
+predictable behavior across team members and across models.
+
+STANDARD BOOTSTRAP SEQUENCE:
+
+  STEP 1: PIN THE RIGHT DOCS
+    Determine session focus, then pin (paste at session start) the
+    appropriate continuity docs:
+    
+      Always:                Master Continuity
+      Sprint work:           + Sprint Continuity
+      Architecture work:     + Architecture Continuity
+      Planning/scoping:      + Backlog & Roadmap
+      New team member:       + Team & Handoff
+      Cross-cutting work:    Pin all five core docs
+    
+    Keep this doc (Session Control) pinned for any session where the
+    LLM needs to know how the team works.
+
+  STEP 2: PASTE THE BOOTSTRAP BLOCK
+    Each continuity doc contains an "LLM SESSION BOOTSTRAP" block at
+    the top. Paste those blocks first, then the doc bodies. The
+    bootstrap blocks are short and explicitly orient the model.
+
+  STEP 3: STATE THE SESSION FOCUS
+    One sentence: "Today I'm working on [specific task]." This anchors
+    the model and prevents drift into adjacent topics.
+
+  STEP 4: STATE YOUR ROLE AND CONSTRAINTS
+    "I am [role]. I can change [scope]. I cannot change [out-of-scope]
+    without [approval process]." This prevents the model from suggesting
+    actions outside your authority.
+
+  STEP 5: ASK THE MODEL TO ACKNOWLEDGE
+    "Confirm you have read the docs and summarize the project in 3
+    sentences before we proceed." If the summary is wrong or vague, the
+    bootstrap failed -- restart, do not proceed.
+
+
+================================================================================
+CROSS-MODEL PROMPT PATTERNS
+================================================================================
+
+Patterns the team has found work consistently across the LLMs we use.
+Patterns that only work in one model belong in that model's notes section
+above, not here.
+
+PATTERN: Change Proposal Before Execution
+  When asking the model to modify any artifact (code, doc, spec):
+    "Propose the specific changes you would make as a numbered list.
+    Do not write the full updated artifact yet. Wait for my approval
+    on the proposal."
+  Why: Lets you catch misunderstandings before the model commits a
+  full revision. Cheaper to redirect a list than to redo a 500-line
+  rewrite.
+
+PATTERN: Explicit Uncertainty Surfacing
+  In any session where the model might be guessing:
+    "If you are uncertain about [X], say so explicitly. Do not infer
+    file paths, naming conventions, or technical decisions that are
+    not in the docs. Ask before assuming."
+  Why: All models will hallucinate to fill gaps unless told not to.
+
+PATTERN: Constrained Output Format
+  When asking for structured output:
+    "Respond in exactly this format: [show the format]. Do not add
+    preamble, summary, or commentary outside this format."
+  Why: Reduces parsing burden and prevents helpful-but-unwanted
+  expansion.
+
+PATTERN: Doc-Anchored Reasoning
+  When asking for analysis or recommendations:
+    "Base your answer only on the pinned continuity docs. If the docs
+    do not contain enough information, list what is missing rather
+    than answering from general knowledge."
+  Why: Prevents the model from substituting generic best-practice
+  advice for project-specific reality.
+
+PATTERN: Handoff Summary
+  At session close:
+    "Summarize this session as a 5-bullet handoff: what we worked on,
+    what we decided, what is unfinished, what blockers remain, and
+    what the next session should pick up first."
+  Why: Captures session state in a form that can be pasted into the
+  next session's bootstrap.
+
+
+[Add patterns as the team discovers them.]
+
+
+================================================================================
+THREAD HEALTH INDICATORS
+================================================================================
+
+Signals that a session is degrading and should be wrapped or restarted.
+Watching for these prevents wasted hours on a thread that has lost
+coherence.
+
+SIGNS OF DEGRADATION:
+  - Model contradicts its own earlier statements within the session
+  - Model "forgets" pinned doc content (re-asks for information you
+    already provided)
+  - Suggestions get vaguer and more generic over time
+  - Model starts hedging heavily on previously-confident answers
+  - Output quality drops on tasks the model handled well earlier
+  - Model starts acknowledging instructions but not following them
+
+WHEN YOU SEE DEGRADATION:
+  1. Capture the current state via Handoff Summary pattern (above).
+  2. Close the session.
+  3. Start a fresh session, paste the handoff summary into the
+     bootstrap, and continue.
+  4. If degradation happens repeatedly at similar context lengths,
+     log it in this doc's "Known Failure Modes" section so the team
+     can plan around it.
+
+DO NOT try to "fix" a degraded thread by adding more context. More
+context accelerates degradation. Restart is faster than recovery.
+
+
+================================================================================
+KNOWN FAILURE MODES
+================================================================================
+
+Specific recurring failure modes the team has hit and how to avoid or
+recover from each.
+
+FAILURE: [Description]
+  Triggers When:    [What conditions cause it]
+  Symptom:          [How you know it's happening]
+  Avoidance:        [How to prevent]
+  Recovery:         [What to do once it happens]
+
+FAILURE: [Description]
+  Triggers When:    
+  Symptom:          
+  Avoidance:        
+  Recovery:         
+
+
+================================================================================
+ESCALATION PATTERNS
+================================================================================
+
+When an LLM session produces output that needs human review beyond the
+operator. These are governance patterns, not technical ones.
+
+ESCALATE TO TECH LEAD WHEN:
+  - LLM proposes architectural change not covered by an existing ADR
+  - LLM proposes change to a contract or integration point
+  - LLM flags a security or data-handling concern in existing code
+  - Output quality is suspect on a critical path item
+
+ESCALATE TO PRODUCT/PM WHEN:
+  - LLM identifies scope ambiguity in a story
+  - LLM surfaces a stakeholder need not in the backlog
+  - LLM proposes deferring committed work
+
+ESCALATE TO CONTINUITY STEWARD WHEN:
+  - A continuity doc needs structural change (not just content update)
+  - Multiple sessions hit the same gap in the docs
+  - A new LLM is being evaluated for project use
+
+
+================================================================================
+DOC UPDATE PROTOCOL
+================================================================================
+
+How continuity docs themselves get updated. Discipline here is what
+keeps the docs trustworthy over time.
+
+WHO UPDATES WHAT:
+  Sprint Continuity:        Owner roles update their own in-flight items;
+                            Scrum Master / equivalent updates standup log.
+  Master Continuity:        Continuity Steward updates; PM proposes content.
+  Architecture Continuity:  Tech Lead approves; any engineer can propose.
+  Backlog & Roadmap:        PM owns; Tech Lead reviews technical items.
+  Session Control:          Continuity Steward owns; team contributes
+                            patterns and failure modes.
+  Team & Handoff:           Continuity Steward owns.
+
+UPDATE WORKFLOW:
+  1. Make the change in the doc (or propose it via the team's normal
+     review channel).
+  2. Add a Version Log entry with date, initials, and one-line summary.
+  3. Bump the version number per the project's versioning rules (see
+     Master Continuity).
+  4. Notify the team if the change affects active work.
+
+NEVER:
+  - Edit a doc silently (without a Version Log entry).
+  - Delete content from append-only sections (decisions, ADRs, retros).
+  - Reformat a doc to a different format (markdown, docx, etc.) -- the
+    plain-text format is intentional for LLM agnosticism.
+
+
+================================================================================
+VERSION LOG
+================================================================================
+
+vX.Y | YYYY-MM-DD | [Initials] | Initial draft from template
+vX.Y | YYYY-MM-DD | [Initials] | [Material change summary]
+
+
+================================================================================
+
+Continuity Framework by ArcReact | arcreact.com
+Adapted for team-based Agile workflows | LLM-agnostic plaintext format

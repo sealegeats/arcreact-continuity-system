@@ -1,0 +1,226 @@
+TEAM & HANDOFF CONTINUITY DOCUMENT
+[Project Name] | v[X.Y] | [Month Year]
+
+Purpose: Captures who owns what, how work hands off between team members
+and roles, and how the continuity doc system itself is stewarded. This is
+the doc that keeps a multi-person team coordinated when the original
+ArcReact continuity system was designed for a single operator.
+
+FORMAT NOTE: Plain text (.txt). LLM-agnostic.
+
+UPDATE CADENCE: Updated when team composition changes, when ownership
+shifts, when handoff protocols are revised, or when a recurring handoff
+issue is identified.
+
+NAMING CONVENTION:
+  This doc uses ROLES, not personal names. Roles are stable; people
+  rotate. If a personal-name reference is unavoidable (e.g., for a
+  decision attribution in another doc), keep it confined to that
+  decision entry, not embedded in process descriptions.
+
+
+================================================================================
+LLM SESSION BOOTSTRAP
+================================================================================
+
+  >>> BEGIN BOOTSTRAP <<<
+  You are assisting with [Project Name]. This session involves team
+  coordination, handoffs, or continuity doc stewardship. I am [role].
+  
+  Pin this Team & Handoff doc alongside Master Continuity. Treat the
+  ownership matrix as authoritative -- do not propose actions that
+  cross ownership boundaries without flagging the boundary.
+  >>> END BOOTSTRAP <<<
+
+
+================================================================================
+TEAM ROLE MAP
+================================================================================
+
+Roles on this project. Headcount per role is captured here; specific
+people are not (to keep this doc decoupled from team turnover).
+
+ROLE: [e.g., Product Manager]
+  Headcount:        [N]
+  Primary Domain:   [What they own]
+  Touches:          [Which continuity docs they regularly update]
+  Decision Scope:   [What decisions they make unilaterally vs. consult]
+
+ROLE: [e.g., Tech Lead]
+  Headcount:        
+  Primary Domain:   
+  Touches:          
+  Decision Scope:   
+
+ROLE: [e.g., Senior Developer]
+  Headcount:        
+  Primary Domain:   
+  Touches:          
+  Decision Scope:   
+
+ROLE: [e.g., Developer]
+  Headcount:        
+  Primary Domain:   
+  Touches:          
+  Decision Scope:   
+
+ROLE: [e.g., QA Engineer]
+  Headcount:        
+  Primary Domain:   
+  Touches:          
+  Decision Scope:   
+
+ROLE: [e.g., Scrum Master]
+  Headcount:        
+  Primary Domain:   
+  Touches:          
+  Decision Scope:   
+
+[Add roles as needed.]
+
+
+================================================================================
+CONTINUITY DOC STEWARDSHIP
+================================================================================
+
+Each continuity doc has one designated Steward. The Steward is the
+single accountable owner for that doc's accuracy, version log
+maintenance, and structural integrity. Stewards do not have to write
+all updates -- anyone on the team can propose changes -- but the
+Steward approves and merges.
+
+DOC                          STEWARD ROLE          BACKUP STEWARD
+Master Continuity            [Role]                [Role]
+Sprint Continuity            [Role]                [Role]
+Architecture Continuity      [Role]                [Role]
+Backlog & Roadmap            [Role]                [Role]
+Session Control              [Role]                [Role]
+Team & Handoff               [Role]                [Role]
+
+ROTATION POLICY:
+  [How often stewardship rotates, if at all. Options:
+    - Fixed: Stewardship is tied permanently to a role.
+    - Rotating: Stewardship rotates each [N sprints / quarter / etc.]
+    - Hybrid: Some docs fixed, others rotating.
+  Document the choice and the rotation cadence here.]
+
+
+================================================================================
+OWNERSHIP MATRIX (RACI-LITE)
+================================================================================
+
+Who is Responsible, Accountable, Consulted, Informed for the project's
+key activity types. Lightweight version of a full RACI -- focuses on
+activities where ownership ambiguity has caused friction.
+
+ACTIVITY                           ACCOUNTABLE       CONSULTED
+Sprint planning                    [Role]            [Role(s)]
+Sprint goal definition             [Role]            [Role(s)]
+Story refinement                   [Role]            [Role(s)]
+Architecture decisions (ADRs)      [Role]            [Role(s)]
+Production deployment              [Role]            [Role(s)]
+Stakeholder communication          [Role]            [Role(s)]
+Continuity doc structural change   [Role]            [Role(s)]
+Adding new LLM tool to project     [Role]            [Role(s)]
+Onboarding new team member         [Role]            [Role(s)]
+
+
+================================================================================
+HANDOFF PROTOCOLS
+================================================================================
+
+How work moves between people and stages. Each handoff has a defined
+"done" state on the sending side and an "accepted" state on the receiving
+side. Implicit handoffs are the source of most coordination failures.
+
+HANDOFF: Developer -> Code Review
+  Sender Done When:    PR open, all CI checks green, description complete
+                       per PR template, self-review completed.
+  Receiver Accepts:    Reviewer assigned, review begun within [SLA].
+  Continuity Update:   Sprint Continuity ticket status -> "In Review"
+
+
+HANDOFF: Code Review -> QA
+  Sender Done When:    PR merged, change deployed to QA environment,
+                       test notes added to ticket.
+  Receiver Accepts:    QA picks up ticket, acknowledges scope.
+  Continuity Update:   Sprint Continuity ticket status -> "In QA"
+
+
+HANDOFF: QA -> Done
+  Sender Done When:    All acceptance criteria verified, no new bugs
+                       found in scope, test artifacts captured.
+  Receiver Accepts:    PM/Owner role marks ticket complete.
+  Continuity Update:   Sprint Continuity ticket status -> "Done"
+
+
+HANDOFF: Sprint N -> Sprint N+1
+  Sender Done When:    Sprint Review complete, Retro complete, carry-over
+                       items identified, Sprint Continuity finalized for
+                       Sprint N.
+  Receiver Accepts:    Sprint Planning complete for N+1, new Sprint
+                       Continuity opened.
+  Continuity Update:   Sprint N continuity archived (or rolled into
+                       Sprint N+1 carry-over section). Backlog & Roadmap
+                       reflects new sprint commitments.
+
+
+HANDOFF: Person OOO -> Coverage
+  Sender Done When:    Active work documented in Sprint Continuity with
+                       enough context for coverage to pick up. Coverage
+                       role identified and notified. Anything decision-
+                       blocking flagged.
+  Receiver Accepts:    Coverage role acknowledges the items they will
+                       handle and the items they will park.
+  Continuity Update:   Sprint Continuity in-flight section updated with
+                       coverage assignments.
+
+
+HANDOFF: Onboarding (new team member -> productive)
+  Sender Done When:    New member has access to all systems, has read
+                       Master + Architecture + Session Control + this
+                       doc, has shadowed at least [N] sessions.
+  Receiver Accepts:    New member can bootstrap an LLM session and
+                       complete a small story without close supervision.
+  Continuity Update:   Team Role Map updated if headcount changed.
+
+
+[Add handoffs as the team identifies them.]
+
+
+================================================================================
+COMMUNICATION CONVENTIONS
+================================================================================
+
+How the team communicates to keep continuity docs accurate without
+turning every Slack message into a doc update.
+
+CHANNEL                        USE FOR
+Standup                        Daily in-flight status, blockers
+Sprint Planning                Story commitment, scope decisions
+Architecture Sync              ADR proposals, technical debate
+Continuity Review              Doc updates, structural changes,
+                               stewardship issues
+
+ASYNC CONVENTIONS:
+  - Decisions made in chat are not real until logged in the relevant
+    continuity doc. "It's not in the doc, it didn't happen."
+  - When raising a blocker, tag the role accountable for resolution
+    (per the Ownership Matrix), not a personal name.
+  - When proposing a doc update, link the proposal to the section
+    being changed; don't ask "should we update X?" without showing
+    the proposed text.
+
+
+================================================================================
+VERSION LOG
+================================================================================
+
+vX.Y | YYYY-MM-DD | [Initials] | Initial draft from template
+vX.Y | YYYY-MM-DD | [Initials] | [Material change summary]
+
+
+================================================================================
+
+Continuity Framework by ArcReact | arcreact.com
+Adapted for team-based Agile workflows | LLM-agnostic plaintext format

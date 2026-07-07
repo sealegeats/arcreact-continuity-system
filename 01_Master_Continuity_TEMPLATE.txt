@@ -1,0 +1,192 @@
+MASTER CONTINUITY DOCUMENT
+[Project Name] | v[X.Y] | [Month Year]
+
+Purpose: Project-level source of truth. If a teammate (or LLM) reads only one
+continuity doc, this is the one. Captures mission, scope, current state,
+active workstreams, and the running decisions log. Pin this first in any
+LLM session; pin the other continuity docs alongside as needed.
+
+FORMAT NOTE: Plain text (.txt). Maintained as plaintext to ensure
+LLM-agnostic compatibility (Gemini, ChatGPT, Claude, Copilot, etc.) and
+to prevent formatting drift between editors.
+
+VERSION CONTROL NOTE: Version bumps require approval from the designated
+Continuity Steward (see Team & Handoff Continuity doc). Sub-version bumps
+(v1.0 -> v1.1) for content additions; major bumps (v1.x -> v2.0) for
+structural changes to the doc itself.
+
+
+================================================================================
+LLM SESSION BOOTSTRAP
+================================================================================
+
+Paste the following at the start of any LLM session that needs project
+context. This block is designed to bring any model up to speed in one paste.
+
+  >>> BEGIN BOOTSTRAP <<<
+  You are assisting with [Project Name], a [one-sentence project
+  description]. The project is being executed by a multi-person Agile
+  team. I am [your role / name optional]. Today's session focus is
+  [one-line goal].
+  
+  Attached/pasted below are the current continuity documents. Read them
+  in order: Master, then [other relevant docs for this session]. Do not
+  invent context not present in these docs. If you need information that
+  is not in the docs, ask before proceeding.
+  
+  Conventions to observe:
+    - Do not modify any artifact without proposing the change first.
+    - Use plain text for any continuity doc updates.
+    - Flag uncertainty explicitly; do not guess at file paths, names,
+      or technical decisions.
+  >>> END BOOTSTRAP <<<
+
+
+================================================================================
+PROJECT IDENTITY
+================================================================================
+
+Project Name:           [Name]
+Project Codename:       [Optional internal codename]
+Sponsor / Stakeholder:  [Org or role, not personal name]
+Start Date:             [YYYY-MM-DD]
+Target Completion:      [YYYY-MM-DD or "ongoing"]
+Current Phase:          [Discovery | Design | Build | Stabilize | Maintain]
+
+
+================================================================================
+MISSION & SCOPE
+================================================================================
+
+MISSION:
+  [One paragraph. What is this project trying to accomplish? Written so
+  a new team member or an LLM can understand the "why" in 30 seconds.]
+
+IN SCOPE:
+  - [Capability or deliverable]
+  - [Capability or deliverable]
+  - [Capability or deliverable]
+
+OUT OF SCOPE:
+  - [Explicitly excluded item -- prevents scope creep and clarifies LLM
+    boundaries]
+  - [Explicitly excluded item]
+
+SUCCESS CRITERIA:
+  - [Measurable outcome]
+  - [Measurable outcome]
+
+
+================================================================================
+CURRENT STATE SNAPSHOT
+================================================================================
+
+Last Updated:    [YYYY-MM-DD by Steward Initials]
+Sprint:          [Current sprint number / name]
+Overall Status:  [Green | Yellow | Red] -- [one-line rationale]
+
+WHAT JUST SHIPPED (last 1-2 weeks):
+  - [Deliverable] -- [one-line outcome]
+  - [Deliverable] -- [one-line outcome]
+
+WHAT IS IN FLIGHT:
+  - [Workstream] -- owner: [role], status: [%/state]
+  - [Workstream] -- owner: [role], status: [%/state]
+
+WHAT IS BLOCKED:
+  - [Item] -- blocked by: [dependency], owner pursuing resolution: [role]
+
+
+================================================================================
+ACTIVE WORKSTREAMS
+================================================================================
+
+Workstreams are durable threads of work that span multiple sprints. Each
+should have a designated owner-role (not a personal name) and a clear
+"done" condition or transition state.
+
+WORKSTREAM 1: [Name]
+  Owner Role:      [e.g., Frontend Lead]
+  Started:         [YYYY-MM-DD]
+  Done When:       [Specific transition condition]
+  Current State:   [1-2 sentences]
+  Linked Docs:     [Architecture Continuity section X, Sprint Continuity, etc.]
+
+WORKSTREAM 2: [Name]
+  Owner Role:      [Role]
+  Started:         [YYYY-MM-DD]
+  Done When:       [Condition]
+  Current State:   [1-2 sentences]
+  Linked Docs:     [References]
+
+[Add additional workstreams as needed. Aim for 3-7 active workstreams; if
+more, the project likely needs to be split or some streams paused.]
+
+
+================================================================================
+KEY DECISIONS LOG
+================================================================================
+
+Decisions that shape the project's direction. Append-only -- decisions are
+never deleted, only superseded with a new entry referencing the prior one.
+Routine technical decisions belong in Architecture Continuity (ADR section);
+this log is for decisions that affect scope, priorities, or strategy.
+
+Format:
+  [YYYY-MM-DD] [Decision title]
+    Context:       [What prompted the decision]
+    Decision:      [What was decided]
+    Rationale:     [Why this option over alternatives]
+    Decided By:    [Role or forum, e.g., "Sprint Planning" or "Tech Lead"]
+    Supersedes:    [Prior decision date, if applicable, else "N/A"]
+
+
+[Most recent decisions at top.]
+
+[YYYY-MM-DD] [Title]
+  Context:    
+  Decision:   
+  Rationale:  
+  Decided By: 
+  Supersedes: 
+
+
+================================================================================
+GLOSSARY & CONVENTIONS
+================================================================================
+
+Project-specific terms, acronyms, and naming conventions. Critical for LLM
+sessions -- models cannot infer internal jargon without it being defined here.
+
+  [TERM]       -- [Definition]
+  [ACRONYM]    -- [Expansion and meaning in this project's context]
+  [Convention] -- [e.g., "Branch names follow pattern: feature/[ticket]-[short-desc]"]
+
+
+================================================================================
+DOCUMENT INVENTORY
+================================================================================
+
+Other continuity docs in this project's set. Pin alongside Master as needed
+based on session focus.
+
+  Sprint Continuity         -- Current sprint state, daily-updated
+  Architecture Continuity   -- System design, ADRs, tech stack
+  Backlog & Roadmap         -- Prioritized work ahead, technical debt
+  Session Control           -- LLM bootstrap patterns, prompt conventions
+  Team & Handoff            -- Ownership, stewardship, handoff protocols
+
+
+================================================================================
+VERSION LOG
+================================================================================
+
+Append-only. Most recent at top. Format: vX.Y | YYYY-MM-DD | Steward | Summary
+
+v0.1 | YYYY-MM-DD | [Initials] | Initial draft from template
+
+
+================================================================================
+
+Continuity Framework by ArcReact | arcreact.com
+Adapted for team-based Agile workflows | LLM-agnostic plaintext format

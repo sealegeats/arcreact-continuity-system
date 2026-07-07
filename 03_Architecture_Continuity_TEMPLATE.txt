@@ -1,0 +1,219 @@
+ARCHITECTURE CONTINUITY DOCUMENT
+[Project Name] | v[X.Y] | [Month Year]
+
+Purpose: System design source of truth. Captures the tech stack, integration
+points, data flow, and the running Architecture Decision Record (ADR) log.
+Slow-changing relative to Sprint Continuity, but high-stakes -- changes here
+ripple through the codebase. Pin this in any session involving architectural
+discussion, refactoring, or new component design.
+
+FORMAT NOTE: Plain text (.txt). LLM-agnostic.
+
+UPDATE CADENCE: Updated when architectural decisions are made, when new
+components are added, or when integration contracts change. ADR section is
+append-only.
+
+
+================================================================================
+LLM SESSION BOOTSTRAP
+================================================================================
+
+  >>> BEGIN BOOTSTRAP <<<
+  You are assisting with [Project Name]. This session involves architecture
+  -- design discussion, refactoring, or new component work. I am [role].
+  
+  Pin this Architecture Continuity doc alongside Master Continuity. Treat
+  the ADR log as authoritative; do not propose changes that contradict an
+  active ADR without flagging the contradiction explicitly. If a needed
+  decision is not in the ADR log, surface that gap before proposing code.
+  >>> END BOOTSTRAP <<<
+
+
+================================================================================
+SYSTEM OVERVIEW
+================================================================================
+
+ONE-PARAGRAPH DESCRIPTION:
+  [What is this system at the highest level? Written so a new engineer can
+  orient in 60 seconds.]
+
+PRIMARY USERS:
+  - [User type] -- [primary use case]
+  - [User type] -- [primary use case]
+
+DEPLOYMENT CONTEXT:
+  Environment(s):    [Dev | Staging | Prod | etc.]
+  Hosting:           [Where it runs]
+  Access Pattern:    [Web | Internal | API | etc.]
+
+
+================================================================================
+TECHNOLOGY STACK
+================================================================================
+
+FRONTEND:
+  Framework:         [e.g., React 18]
+  Language:          [e.g., TypeScript]
+  State Management:  [e.g., Redux Toolkit]
+  Styling:           [e.g., Tailwind, CSS Modules]
+  Build:             [e.g., Vite]
+  Test:              [e.g., Vitest, Playwright]
+
+BACKEND:
+  Language:          [e.g., Java 21]
+  Framework:         [e.g., Spring Boot 3.x]
+  Build:             [e.g., Maven, Gradle]
+  Test:              [e.g., JUnit 5, Mockito]
+
+DATA LAYER:
+  Primary DB:        [e.g., PostgreSQL 15]
+  Caching:           [e.g., Redis -- if applicable]
+  Migrations:        [e.g., Flyway, Liquibase]
+  ORM/Access:        [e.g., JPA/Hibernate, JDBC]
+
+INFRASTRUCTURE:
+  CI/CD:             [Tool]
+  Container:         [Docker | Podman | N/A]
+  Orchestration:     [K8s | ECS | None]
+  Monitoring:        [Tool]
+  Logging:           [Tool]
+
+EXTERNAL SERVICES:
+  - [Service]        -- [purpose, integration method]
+  - [Service]        -- [purpose, integration method]
+
+
+================================================================================
+COMPONENT MAP
+================================================================================
+
+Top-level components and their responsibilities. Aim for the level of detail
+a new engineer needs to know "where do I go to change X?"
+
+COMPONENT: [Name]
+  Purpose:        [What it does]
+  Location:       [Repo path or module]
+  Owner Role:     [Who maintains it]
+  Depends On:     [Other components]
+  Consumed By:    [Other components or external systems]
+
+COMPONENT: [Name]
+  Purpose:        
+  Location:       
+  Owner Role:     
+  Depends On:     
+  Consumed By:    
+
+[Add components as needed. If this list exceeds ~15 entries, consider
+grouping by subsystem or splitting into sub-architecture docs.]
+
+
+================================================================================
+DATA FLOW
+================================================================================
+
+KEY FLOWS (describe the most important request/data paths in plain prose):
+
+FLOW 1: [Name -- e.g., "User authentication"]
+  [Step-by-step description of how data moves through the system. Plain
+  text, no diagrams. If a visual is needed, link to a diagram artifact in
+  the team's wiki rather than embedding here.]
+
+FLOW 2: [Name]
+  [Description]
+
+
+================================================================================
+INTEGRATION POINTS & CONTRACTS
+================================================================================
+
+External APIs, internal service contracts, message formats. Changes to
+contracts require an ADR.
+
+INTEGRATION: [Name]
+  Type:            [REST | GraphQL | Message Queue | DB Link | File Drop | etc.]
+  Direction:       [Inbound | Outbound | Bidirectional]
+  Owner of Spec:   [This team | External team -- name]
+  Authentication:  [Method]
+  Schema Location: [Where the contract is documented]
+  Versioning:      [How breaking changes are handled]
+
+
+================================================================================
+ARCHITECTURE DECISION RECORDS (ADR LOG)
+================================================================================
+
+Append-only log of architectural decisions. Decisions that affect strategy
+or scope (rather than pure architecture) belong in the Master Continuity
+Key Decisions Log.
+
+ADR format:
+  ADR-[NNN] [Title]
+    Date:          [YYYY-MM-DD]
+    Status:        [Proposed | Accepted | Superseded by ADR-XXX | Deprecated]
+    Context:       [What problem prompted this decision]
+    Decision:      [What was decided]
+    Alternatives:  [What else was considered, briefly]
+    Consequences:  [What this enables or constrains downstream]
+    Decided By:    [Role or forum]
+
+
+[Most recent ADRs at top. Numbered sequentially.]
+
+ADR-001 [Title]
+  Date:          
+  Status:        
+  Context:       
+  Decision:      
+  Alternatives:  
+  Consequences:  
+  Decided By:    
+
+
+================================================================================
+KNOWN DEBT & CONSTRAINTS
+================================================================================
+
+Architectural debt and known constraints that aren't bugs but shape how
+work gets done. Move items here from Sprint Continuity when they outlive
+a single sprint.
+
+  - [Item] -- impact: [What it makes harder] -- mitigation/plan: [If any]
+  - [Item] -- impact: [Description] -- mitigation/plan: [If any]
+
+
+================================================================================
+CONVENTIONS
+================================================================================
+
+Architectural and code conventions that span the codebase. Style-level
+linting belongs in repo config, not here -- this is for conventions an LLM
+needs to know to generate code that fits.
+
+NAMING:
+  - [Convention -- e.g., "REST endpoints use kebab-case plural nouns"]
+  - [Convention]
+
+ERROR HANDLING:
+  - [Convention -- e.g., "All service methods return Result<T, Error>"]
+
+LOGGING:
+  - [Convention -- e.g., "Structured logging with correlation ID on every entry"]
+
+TESTING:
+  - [Convention -- e.g., "Unit tests required for all service-layer methods;
+                          integration tests required for new endpoints"]
+
+
+================================================================================
+VERSION LOG
+================================================================================
+
+vX.Y | YYYY-MM-DD | [Initials] | Initial draft from template
+vX.Y | YYYY-MM-DD | [Initials] | [Material change summary]
+
+
+================================================================================
+
+Continuity Framework by ArcReact | arcreact.com
+Adapted for team-based Agile workflows | LLM-agnostic plaintext format
